@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>YOS</title>
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+	<script>
+		let element = document.querySelector('html');
+		if (element) {
+			const setFontSize = () => {
+				let value = 10 / 1440 * element.clientWidth;
+				element.style.fontSize = value + 'px';
+			}
+
+			setFontSize();
+
+			window.addEventListener('resize', setFontSize);
+		}
+	</script>
+
+	<link rel="stylesheet" href="css/style.css">
+	<style>
+		body.page-loaded ._preloader {
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		body.page-loaded ._preloader:before {
+			display: none;
+		}
+
+		._preloader {
+			background-color: #fff;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 999;
+			-webkit-transition: all .6s ease .2s;
+			-o-transition: all .6s ease .2s;
+			transition: all .6s ease .2s;
+		}
+
+		._preloader:before {
+			position: absolute;
+			content: '';
+			z-index: 999;
+			top: 50%;
+			left: 50%;
+			height: 50px;
+			width: 50px;
+			border-radius: 50%;
+			border: 4px solid #6e6e6e;
+			border-right: 4px solid #fff;
+			-webkit-transform: translate(-50%, -50%);
+			-ms-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+			-webkit-animation: preloadBody 2s linear infinite;
+			animation: preloadBody 2s linear infinite;
+		}
+
+		@-webkit-keyframes preloadBody {
+			from {
+				-webkit-transform: translate(-50%, -50%) rotate(0);
+				transform: translate(-50%, -50%) rotate(0);
+			}
+
+			to {
+				-webkit-transform: translate(-50%, -50%) rotate(360deg);
+				transform: translate(-50%, -50%) rotate(360deg);
+			}
+		}
+
+		@keyframes preloadBody {
+			from {
+				-webkit-transform: translate(-50%, -50%) rotate(0);
+				transform: translate(-50%, -50%) rotate(0);
+			}
+
+			to {
+				-webkit-transform: translate(-50%, -50%) rotate(360deg);
+				transform: translate(-50%, -50%) rotate(360deg);
+			}
+		}
+	</style>
+	
+<script src="js/vendors.js"></script>
+<script src="js/app.js"></script>
+<!-- <script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7Q82l2QjSzJJk1uUW3OzUBGPTlbk8w1g&callback=initMap&libraries=&v=weekly"
+defer
+></script> -->
+</head>
+
+<body>
+    <div class="_preloader"></div>
+
+    <header class="header " data-header data-popup="lock-padding">
+
+    <a href="#" class="top-offer" data-top-offer>
+        <div class="top-offer__inner container">
+            <div class="top-offer__text">
+                Безкоштовна доставка замовлень на суму від 2 000 ₴
+            </div>
+            <button class="top-offer__close" data-action="close-top-offer">
+                <span class="icon-close"></span>
+            </button>
+        </div>
+    </a>
+
+    <div class="header__nav header-desk">
+        <div class="header-desk__body container header-actions">
+            <div class="header-actions__left">
+                <div class="header-actions__item">
+                    <a href="#">каталог</a>
+                </div>
+                <div class="header-actions__item">
+                    <a href="#">запитання й відповіді</a>
+                </div>
+                <div class="header-actions__item">
+                    <a href="#">про нас</a>
+                </div>
+                <div class="header-actions__item">
+                    <a href="#">контакти</a>
+                </div>
+            </div>
+            <div class="header-actions__logo">
+                <a href="#">
+                    <img src="img/logo/yos-main-logo.png" alt="">
+                </a>
+            </div>
+            <div class="header-actions__right">
+                <div class="header-actions__item">
+                    <button data-action="show-search-by-id" data-id="descktop-search">
+                        пошук
+                    </button>
+                    <div class="main-search" data-main-search data-id="descktop-search">
+                        <form action="/">
+                            <div class="main-search__inner">
+                                <input type="text" class="input" placeholder="Що ви шукаєте?">
+                                <button class="main-search__btn">
+                                    <span class="icon-search"></span>
+                                </button>
+                                <button type="button" class="main-search__btn-close">
+                                    <span class="icon-close-thin"></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="header-actions__item">
+                    <div class="language">
+                        <div class="language__current">
+                            українська
+                        </div>
+                        <ul class="language__list">
+                            <li>
+                                <a href="#">english</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-actions__item">
+                    <a href="#">
+                        кабінет
+                    </a>
+                </div>
+                <div class="header-actions__item">
+                    <button class="basket-count" data-action="open-side-basket">2</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header__nav header-mob">
+        <div class="header-mob__body container header-actions">
+            <div class="header-actions__left">
+                <div class="header-actions__item">
+                    <button data-action="open-mobile-menu">
+                        <img class="img-svg" src="img/icons/burger.svg" alt="">
+                    </button>
+                </div>
+                <div class="header-actions__item">
+                    <button data-action="show-search-by-id" data-id="mob-search">
+                        <img class="img-svg" src="img/icons/search.svg" alt="">
+                    </button>
+                </div>
+            </div>
+            <div class="header-actions__logo">
+                <a href="#">
+                    <img src="img/logo/yos-main-logo.png" alt="">
+                </a>
+            </div>
+            <div class="header-actions__right">
+                <div class="header-actions__item">
+                    <a href="#">
+                        <img class="img-svg" src="img/icons/user.svg" alt="">
+                    </a>
+                </div>
+                <div class="header-actions__item">
+                    <button class="basket-count" data-action="open-side-basket">2</button>
+                </div>
+            </div>
+        </div>
+        <div class="main-search" data-main-search data-id="mob-search">
+            <form action="/">
+                <div class="main-search__inner">
+                    <input type="text" class="input" placeholder="Що ви шукаєте?">
+                    <button class="main-search__btn">
+                        <span class="icon-search"></span>
+                    </button>
+                    <button type="button" class="main-search__btn-close">
+                        <span class="icon-close-thin"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</header>
+
+<div class="mobile-menu" data-mobile-menu>
+    <div class="mobile-menu__inner container">
+
+        <div class="mobile-menu__head header-actions">
+            <div class="header-actions__left">
+                <div class="header-actions__item">
+                    <button data-action="show-search-by-id" data-id="mobile-menu-search">
+                        <img class="img-svg" src="img/icons/search.svg" alt="">
+                    </button>
+                </div>
+            </div>
+            <div class="header-actions__logo">
+                <a href="#">
+                    <img src="img/logo/yos-main-logo.png" alt="">
+                </a>
+            </div>
+            <div class="header-actions__right">
+                <div class="header-actions__item">
+                    <button class="mobile-menu__close" data-action="close-mobile-menu">
+                        <span class="icon-close-thin"></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="main-search" data-main-search data-id="mobile-menu-search">
+                <form action="/">
+                    <div class="main-search__inner">
+                        <input type="text" class="input" placeholder="Що ви шукаєте?">
+                        <button class="main-search__btn">
+                            <span class="icon-search"></span>
+                        </button>
+                        <button type="button" class="main-search__btn-close">
+                            <span class="icon-close-thin"></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="mobile-menu__body">
+            <div class="mobile-menu__main-layer">
+                <div class="mobile-menu__row">
+                    <ul class="mobile-menu__list">
+                        <li><a href="#">бренди</a></li>
+                        <li><button data-action="show-layer-by-id" data-id="layer-2">обличчя</button></li>
+                        <li><button data-action="show-layer-by-id" data-id="layer-3">волосся</button></li>
+                        <li><button data-action="show-layer-by-id" data-id="layer-4">тіло</button></li>
+                        <li><button data-action="show-layer-by-id" data-id="layer-5">аксесуари</button></li>
+                        <li><a href="#">набори</a></li>
+                        <li><button data-action="show-layer-by-id" data-id="layer-6">wellness</button></li>
+                        <li class="text-color-warning"><a href="#">sale</a></li>
+                    </ul>
+                </div>
+                <div class="mobile-menu__row">
+                    <ul class="mobile-menu__list text-color-secondary">
+                        <li><a href="#">запитання й відповіді</a></li>
+                        <li><a href="#">про нас</a></li>
+                        <li><a href="#">контакти</a></li>
+                    </ul>
+
+                    <div class="mobile-menu__language">
+                        <div class="mobile-menu__title" data-collapse="language">мова</div>
+                        <!-- 
+                                Атрибут "data-collapse" скрывает следующий лемент, который ниже.
+                            -->
+                        <ul class="mobile-menu__list" data-collapse-target="language">
+                            <li><a href="#" class="active">Українська</a></li>
+                            <li><a href="#">English</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-menu__layer" data-layer="layer-2">
+                <button class="mobile-menu__layer-title" data-action="hide-layer">обличчя</button>
+                <ul class="mobile-menu__list">
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Догляд за обличчям</a>
+
+                        <ul class="mobile-menu__sublist">
+                            <li>
+                                <a href="#">Очищення</a>
+                            </li>
+                            <li>
+                                <a href="#">Тонізація</a>
+                            </li>
+                            <li>
+                                <a href="#">Сироватки</a>
+                            </li>
+                            <li>
+                                <a href="#">Креми</a>
+                            </li>
+                            <li>
+                                <a href="#">Маски</a>
+                            </li>
+                            <li>
+                                <a href="#">Масло</a>
+                            </li>
+                            <li>
+                                <a href="#">Ексфоліанти</a>
+                            </li>
+                            <li>
+                                <a href="#">SPF</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Область навколо очей</a>
+                        <ul class="mobile-menu__sublist">
+                            <li>
+                                <a href="#">Крема</a>
+                            </li>
+                            <li>
+                                <a href="#">Сироватки</a>
+                            </li>
+                            <li>
+                                <a href="#">Патчи</a>
+                            </li>
+                            <li>
+                                <a href="#">Гелі</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Шия та декольте</a>
+                    </li>
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Брови та вії</a>
+                    </li>
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Губи</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mobile-menu__layer" data-layer="layer-3">
+                <button class="mobile-menu__layer-title" data-action="hide-layer">волосся</button>
+                <ul class="mobile-menu__list">
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Шампуні</a>
+                    </li>
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Кондиціонери</a>
+                    </li>
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Маски</a>
+                    </li>
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Незмивний догляд</a>
+
+                        <ul class="mobile-menu__sublist">
+                            <li>
+                                <a href="#">Термозахист</a>
+                            </li>
+                            <li>
+                                <a href="#">Масло</a>
+                            </li>
+                            <li>
+                                <a href="#">Крема</a>
+                            </li>
+                            <li>
+                                <a href="#">Ампули</a>
+                            </li>
+                            <li>
+                                <a href="#">Спреї</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Догляд за шкірою голови</a>
+
+                        <ul class="mobile-menu__sublist">
+                            <li>
+                                <a href="#">Скраби та пілінги</a>
+                            </li>
+                            <li>
+                                <a href="#">Маска для шкіри голови</a>
+                            </li>
+                            <li>
+                                <a href="#">Спрей</a>
+                            </li>
+                            <li>
+                                <a href="#">Лосьон</a>
+                            </li>
+                            <li>
+                                <a href="#">Travel версії та мініатюри</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Сухі шампуні</a>
+                    </li>
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Стайлінг</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mobile-menu__layer" data-layer="layer-4">
+                <button class="mobile-menu__layer-title" data-action="hide-layer">тіло</button>
+                <ul class="mobile-menu__list">
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Очищення</a>
+                    </li>
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Зволоження</a>
+                        <ul class="mobile-menu__sublist">
+                            <li>
+                                <a href="#">Крем</a>
+                            </li>
+                            <li>
+                                <a href="#">Лосьон</a>
+                            </li>
+                            <li>
+                                <a href="#">Масло</a>
+                            </li>
+                            <li>
+                                <a href="#">Батер</a>
+                            </li>
+                            <li>
+                                <a href="#">Спреї</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Скраби та пілінги</a>
+                    </li>
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Для ванн</a>
+                    </li>
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Для рук</a>
+                    </li>
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Для ніг</a>
+                    </li>
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Дезодоранти</a>
+                    </li>
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">SPF та автозасмага</a>
+                    </li>
+                    <li>
+                        <a href="#">Зубні пасти</a>
+                    </li>
+                    <li>
+                        <a href="#">Ополіскувачі</a>
+                    </li>
+                    <li>
+                        <a href="#">Спрей</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mobile-menu__layer" data-layer="layer-5">
+                <button class="mobile-menu__layer-title" data-action="hide-layer">аксесуари</button>
+                <ul class="mobile-menu__list">
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Косметички</a>
+                    </li>
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Для лица</a>
+                    </li>
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Для волос</a>
+                    </li>
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Для тела</a>
+                    </li>
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Бьюти-гаджеты</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mobile-menu__layer" data-layer="layer-6">
+                <button class="mobile-menu__layer-title" data-action="hide-layer">health&care</button>
+                <ul class="mobile-menu__list">
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Харчові добавки</a>
+                    </li>
+                    <li>
+                        <a href="#" class="mobile-menu__list-title">Догляд за ротовою порожниною</a>
+                        <ul class="mobile-menu__sublist">
+                            <li>
+                                <a href="#">Зубна щітка</a>
+                            </li>
+                            <li>
+                                <a href="#">Зубна нитка</a>
+                            </li>
+                            <li>
+                                <a href="#">Пасти та гелі</a>
+                            </li>
+                            <li>
+                                <a href="#">Ополіскувач для порожнини рота</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mobile-menu__footer">
+            <!-- 
+                Кабинет пока не делаем, этот елемент сделан на будущее
+            -->
+            <div class="mobile-menu__title">кабінет</div>
+
+            <div class="mobile-menu__cabinet-buttons">
+                <a href="#" class="button-primary dark w-100">увійти</a>
+                <a href="#" class="button-primary light w-100">зареєструватися</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="side-basket" data-side-basket>
+    <!-- 
+        Можно открыть/закрыть боковую корзину скриптами, есть два метода
+        window.sideBasket.open();
+        window.sideBasket.close();
+    -->
+    <div class="side-basket__container">
+        <button class="side-basket__close-btn" data-action="close-side-basket"><span
+                class="icon-close-thin"></span></button>
+        <div class="side-basket__head">
+            ваш кошик <span>(3)</span>
+        </div>
+        <div class="side-basket__scroll-container">
+            <ul class="side-basket__products-list">
+                <li>
+                    <div class="product-card-sm">
+                        <div class="product-card-sm__left">
+                            <button class="product-card-sm__btn-remove"><span class="icon-close"></span></button>
+                            <a href="#" class="product-card-sm__img">
+                                <img src="img/photo/product-card-img-1.png" alt="">
+                            </a>
+                        </div>
+                        <div class="product-card-sm__right">
+                            <div class="product-card-sm__title"><a href="#">zein obagi</a></div>
+                            <div class="product-card-sm__text">
+                                <div class="product-card-sm__text-1">
+                                    Exfoliating Polish, 65g
+                                </div>
+                                <div class="product-card-sm__text-2">
+                                    Zo Skin Health
+                                </div>
+                            </div>
+                            <div class="product-card-sm__group">
+                                <div class="product-card-sm__quantity">
+                                    <div class="product-card-sm__quantity-label">Кількість:</div>
+                                    <div class="quantity" data-quantity>
+    <button class="quantity__btn minus"><span class="icon-square-minus"></span></button>
+    <input type="text" value="1" class="quantity__value">
+    <button class="quantity__btn plus"><span class="icon-square-plus"></span></button>
+</div>
+                                </div>
+                                <div class="product-card-sm__price">
+                                    <div class="product-card-sm__price-current">3 199 ₴</div>
+                                    <div class="product-card-sm__price-old">7 299 ₴</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-card-sm">
+                        <div class="product-card-sm__left">
+                            <button class="product-card-sm__btn-remove"><span class="icon-close"></span></button>
+                            <a href="#" class="product-card-sm__img">
+                                <img src="img/photo/product-card-img-2.png" alt="">
+                            </a>
+                        </div>
+                        <div class="product-card-sm__right">
+                            <div class="product-card-sm__title"><a href="#">rare paris</a></div>
+                            <div class="product-card-sm__text">
+                                <div class="product-card-sm__text-1">
+                                    Ecological Cellulose, 65g
+                                </div>
+                                <div class="product-card-sm__text-2">
+                                    Tresor Solaire
+                                </div>
+                            </div>
+                            <div class="product-card-sm__group">
+                                <div class="product-card-sm__quantity">
+                                    <div class="product-card-sm__quantity-label">Кількість:</div>
+                                    <div class="quantity" data-quantity>
+    <button class="quantity__btn minus"><span class="icon-square-minus"></span></button>
+    <input type="text" value="1" class="quantity__value">
+    <button class="quantity__btn plus"><span class="icon-square-plus"></span></button>
+</div>
+                                </div>
+                                <div class="product-card-sm__price">
+
+                                    <del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi>4
+                                                299&nbsp;<span
+                                                    class="woocommerce-Price-currencySymbol">₴</span></bdi></span></del>
+                                    <ins><span class="woocommerce-Price-amount amount"><bdi>2 299&nbsp;<span
+                                                    class="woocommerce-Price-currencySymbol">₴</span></bdi></span></ins>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="side-basket__payment-info">
+                <div class="side-basket__payment-info-row">
+                    <span>Знижка за системою лояльності</span>
+                    <span class="text-nowrap">-60 ₴</span>
+                </div>
+                <div class="side-basket__payment-info-row">
+                    <span>Інші знижки</span>
+                    <span class="text-nowrap">0 ₴</span>
+                </div>
+                <div class="side-basket__payment-info-row">
+                    <span>Доставка</span>
+                    <span>За тарифами перевізника</span>
+                </div>
+                <div class="side-basket__payment-info-row side-basket__payment-info-row--total">
+                    <span>всього до сплати</span>
+                    <span class="text-nowrap">4 098 ₴</span>
+                </div>
+            </div>
+
+            <div class="side-basket__to-checkout">
+                <a href="#" class="button-primary dark w-100">перейти далі</a>
+            </div>
+
+            <div class="side-basket__free-shipping">
+                <div class="side-basket__free-shipping-head">
+                    <span>До безкоштовної доставки
+                        залишилось:</span>
+                    <span class="text-nowrap">1 230 ₴</span>
+                </div>
+                <div class="side-basket__free-shipping-line">
+                    <div class="line-track">
+                        <div class="line" style="width: 40%;"></div>
+                    </div>
+                </div>
+                <div class="side-basket__free-shipping-total">
+                    <span class="text-nowrap">0 ₴</span>
+                    <span class="text-nowrap">2 000 ₴</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <main class="_page basket-page">
+        <div class="head-height-compensation"></div>
+        <section class="basket">
+    <div class="container">
+        <div class="basket__head">
+            <a href="#" class="basket__link-to-shopping button-link">
+                <span class="icon-chevrone-left">продовжити покупки</span>
+            </a>
+
+            <h2 class="basket__title title-2">
+                ваш кошик
+                <span>(3)</span>
+            </h2>
+        </div>
+        <div class="basket__body">
+            <div class="basket__main">
+                <ul class="basket__list">
+                    <li>
+                        <div class="product-card-sm">
+                            <div class="product-card-sm__left">
+                                <button class="product-card-sm__btn-remove"><span class="icon-close"></span></button>
+                                <a href="#" class="product-card-sm__img">
+                                    <img src="img/photo/product-card-img-1.png" alt="">
+                                </a>
+                            </div>
+                            <div class="product-card-sm__right">
+                                <div class="product-card-sm__title"><a href="#">zein obagi</a></div>
+                                <div class="product-card-sm__text">
+                                    <div class="product-card-sm__text-1">
+                                        Exfoliating Polish, 65g
+                                    </div>
+                                    <div class="product-card-sm__text-2">
+                                        Zo Skin Health
+                                    </div>
+                                </div>
+                                <div class="product-card-sm__group">
+                                    <div class="product-card-sm__quantity">
+                                        <div class="product-card-sm__quantity-label">Кількість:</div>
+                                        <div class="quantity" data-quantity>
+    <button class="quantity__btn minus"><span class="icon-square-minus"></span></button>
+    <input type="text" value="1" class="quantity__value">
+    <button class="quantity__btn plus"><span class="icon-square-plus"></span></button>
+</div>
+                                    </div>
+                                    <div class="product-card-sm__price">
+                                        <div class="product-card-sm__price-current">3 199 ₴</div>
+                                        <div class="product-card-sm__price-old">7 299 ₴</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product-card-sm">
+                            <div class="product-card-sm__left">
+                                <button class="product-card-sm__btn-remove"><span class="icon-close"></span></button>
+                                <a href="#" class="product-card-sm__img">
+                                    <img src="img/photo/product-card-img-2.png" alt="">
+                                </a>
+                            </div>
+                            <div class="product-card-sm__right">
+                                <div class="product-card-sm__title"><a href="#">rare paris</a></div>
+                                <div class="product-card-sm__text">
+                                    <div class="product-card-sm__text-1">
+                                        Ecological Cellulose, 65g
+                                    </div>
+                                    <div class="product-card-sm__text-2">
+                                        Tresor Solaire
+                                    </div>
+                                </div>
+                                <div class="product-card-sm__group">
+                                    <div class="product-card-sm__quantity">
+                                        <div class="product-card-sm__quantity-label">Кількість:</div>
+                                        <div class="quantity" data-quantity>
+    <button class="quantity__btn minus"><span class="icon-square-minus"></span></button>
+    <input type="text" value="1" class="quantity__value">
+    <button class="quantity__btn plus"><span class="icon-square-plus"></span></button>
+</div>
+                                    </div>
+                                    <div class="product-card-sm__price">
+                                        <div class="product-card-sm__price-current">299 ₴</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="product-card-sm">
+                            <div class="product-card-sm__left">
+                                <button class="product-card-sm__btn-remove"><span class="icon-close"></span></button>
+                                <a href="#" class="product-card-sm__img">
+                                    <img src="img/photo/product-card-img-1.png" alt="">
+                                </a>
+                            </div>
+                            <div class="product-card-sm__right">
+                                <div class="product-card-sm__title"><a href="#">zein obagi</a></div>
+                                <div class="product-card-sm__text">
+                                    <div class="product-card-sm__text-1">
+                                        Exfoliating Polish, 65g
+                                    </div>
+                                    <div class="product-card-sm__text-2">
+                                        Zo Skin Health
+                                    </div>
+                                </div>
+                                <div class="product-card-sm__group">
+                                    <div class="product-card-sm__quantity">
+                                        <div class="product-card-sm__quantity-label">Кількість:</div>
+                                        <div class="quantity" data-quantity>
+    <button class="quantity__btn minus"><span class="icon-square-minus"></span></button>
+    <input type="text" value="1" class="quantity__value">
+    <button class="quantity__btn plus"><span class="icon-square-plus"></span></button>
+</div>
+                                    </div>
+                                    <div class="product-card-sm__price">
+                                        <div class="product-card-sm__price-current">3 199 ₴</div>
+                                        <div class="product-card-sm__price-old">7 299 ₴</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="basket__side">
+                <div class="basket__side-row">
+                    <div class="basket__side-promotional-code">
+                        <div class="promotional-code">
+                            <button class="promotional-code__title button-link"
+                                data-collapse="promotional-code"><span>маєте промокод?</span></button>
+                            <div class="promotional-code__body" data-collapse-target="promotional-code">
+                                <input type="text" class="input" value="NEWYEAR23">
+                                <div class="promotional-code__text">промокод успішно застосуваний</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="basket__side-row">
+                    <h4 class="basket__side-title title-4">додати до замовлення</h4>
+                    <div class="basket__side-offer">
+                        <div class="product-card-sm">
+                            <div class="product-card-sm__left">
+                                <a href="#" class="product-card-sm__img">
+                                    <img src="img/photo/product-card-img-2.png" alt="">
+                                </a>
+                            </div>
+                            <div class="product-card-sm__right">
+                                <div class="product-card-sm__title"><a href="#">rare paris</a></div>
+                                <div class="product-card-sm__text">
+                                    <div class="product-card-sm__text-1">
+                                        Cellulose Facial Mask
+                                    </div>
+                                    <div class="product-card-sm__text-2">
+                                        Tresor Solaire Ecological 
+                                    </div>
+                                </div>
+                                <div class="product-card-sm__price">
+                                    <div class="product-card-sm__price-current">299 ₴</div>
+                                </div>
+                                <div class="product-card-sm__btn-add">
+                                    <a href="#" class="button-primary dark button-primary--sm w-100">додати</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="basket__side-row">
+                    <div class="side-basket__payment-info">
+                        <div class="side-basket__payment-info-row">
+                            <span>Знижка за системою лояльності</span>
+                            <span class="text-nowrap">-60 ₴</span>
+                        </div>
+                        <div class="side-basket__payment-info-row">
+                            <span>Інші знижки</span>
+                            <span class="text-nowrap">0 ₴</span>
+                        </div>
+                        <div class="side-basket__payment-info-row">
+                            <span>Доставка</span>
+                            <span>За тарифами перевізника</span>
+                        </div>
+                        <div class="side-basket__payment-info-row side-basket__payment-info-row--total">
+                            <span>всього до сплати</span>
+                            <span class="text-nowrap">4 098 ₴</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="basket__side-row">
+                    <a href="#" class="button-primary dark w-100">перейти далі</a>
+                </div>
+
+                <div class="basket__side-row">
+                    <div class="side-basket__free-shipping">
+                        <div class="side-basket__free-shipping-head">
+                            <span>До безкоштовної доставки
+                                залишилось:</span>
+                            <span class="text-nowrap">1 230 ₴</span>
+                        </div>
+                        <div class="side-basket__free-shipping-line">
+                            <div class="line-track">
+                                <div class="line" style="width: 40%;"></div>
+                            </div>
+                        </div>
+                        <div class="side-basket__free-shipping-total">
+                            <span class="text-nowrap">0 ₴</span>
+                            <span class="text-nowrap">2 000 ₴</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    </main>
+
+    <!-- == FOOTER ================== -->
+    <section class="subscription top-space-140">
+    <div class="subscription__body">
+        <div class="subscription__col">
+            <div class="subscription__img ibg">
+                <img src="img/photo/subscription-1-bw.png" alt="">
+            </div>
+        </div>
+        <div class="subscription__col">
+            <div class="subscription__text-content">
+                <h2 class="title-2">
+                    підпишись на розсилку
+                    новин та корисних
+                    матеріалів
+                </h2>
+                <div class="subscription__text">
+                    Щоб дізнаватися про наші знижки, акції та
+                    спеціальні пропозиції першим.
+                </div>
+                <form action="/" class="subscription-form">
+                    <input type="text" placeholder="Електронна пошта">
+                    <button class="button-link"><span>підписатися</span></button>
+                </form>
+            </div>
+        </div>
+        <div class="subscription__col">
+            <div class="subscription__img ibg">
+                <img src="img/photo/subscription-2-bw.png" alt="">
+            </div>
+        </div>
+        <div class="subscription__col">
+            <div class="subscription__img ibg">
+                <img src="img/photo/subscription-3.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="top-space-140">
+    <footer class="footer-desk">
+        <div class="container">
+            <div class="footer-desk__body">
+                <div class="footer-desk__col footer-desk__col-1">
+                    <div class="footer-desk__logo">
+                        <a href="#">
+                            <img src="img/logo/footer-logo.png" alt="">
+                        </a>
+                    </div>
+                    <div class="footer-desk__text text-content last-no-margin">
+                        <p>
+                            — це мультибрендовий онлайн beauty бутік, доступний для візиту з будь-якої точки світу.
+                        </p>
+                    </div>
+                    <div class="footer-desk__copy">
+                        © 2022 YOS Skincare. Всі права захищені. Designed & developed by ra-web
+                    </div>
+                </div>
+                <div class="footer-desk__col footer-desk__col-2">
+                    <h2 class="footer-desk__title title-2">
+                        <a href="#">категорії</a>
+                    </h2>
+                    <ul class="footer-desk__list">
+                        <li>
+                            <a href="#">Обличчя</a>
+                        </li>
+                        <li>
+                            <a href="#">Волосся</a>
+                        </li>
+                        <li>
+                            <a href="#">Тіло</a>
+                        </li>
+                        <li>
+                            <a href="#">Аксесуари</a>
+                        </li>
+                        <li>
+                            <a href="#">Подарунки</a>
+                        </li>
+                        <li>
+                            <a href="#">Health & Care</a>
+                        </li>
+                        <li>
+                            <a href="#">Sale</a>
+                        </li>
+                        <li>
+                            <a href="#">Бренди</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-desk__col footer-desk__col-3">
+                    <h2 class="footer-desk__title title-2">
+                        <a href="#">зв’яжіться з нами</a>
+                    </h2>
+                    <ul class="footer-desk__list">
+                        <li>
+                            з 10.00 до 18.00
+                        </li>
+                        <li>
+                            <a href="#">+380 (93) 28 55 810</a>
+                        </li>
+                        <li>
+                            <a href="#" class="button-link"><span>telegram</span></a>
+                        </li>
+                        <li>
+                            <a href="#" class="button-link"><span>instagram</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-desk__col footer-desk__col-4">
+                    <h2 class="footer-desk__title title-2">
+                        <a href="#">інформація</a>
+                    </h2>
+                    <ul class="footer-desk__list">
+                        <li>
+                            <a href="#">Угода користувача</a>
+                        </li>
+                        <li>
+                            <a href="#">Справжність товару</a>
+                        </li>
+                        <li>
+                            <a href="#">Повернення товару</a>
+                        </li>
+                        <li>
+                            <a href="#">Доставка і оплата</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <footer class="footer-mob">
+        <div class="container">
+            <div class="footer-mob__body">
+                <div class="footer-mob__row">
+                    <div class="footer-mob__logo">
+                        <a href="#">
+                            <img src="img/logo/footer-logo.png" alt="">
+                        </a>
+                    </div>
+                    <div class="footer-mob__text text-content last-no-margin">
+                        <p>
+                            — це мультибрендовий онлайн beauty
+                            бутік, доступний для візиту з будь-якої
+                            точки світу.
+                        </p>
+                    </div>
+                </div>
+                <div class="footer-mob__row">
+                    <div class="footer-mob__time">
+                        <h3 class="footer-mob__title title-3">години роботи</h3>
+                        <div class="footer-mob__vertical-content">
+                            10.00 — 18.00
+                        </div>
+                    </div>
+                    <div class="footer-mob__contacts">
+                        <h3 class="footer-mob__title title-3">
+                            зв’яжіться <br>
+                            з нами
+                        </h3>
+                        <div class="footer-mob__vertical-content">
+                            <a href="#">+380 (93) 28 55 810</a>
+                            <a href="#" class="button-link"><span>telegram</span></a>
+                            <a href="#" class="button-link"><span>instagram</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-mob__row">
+                    <h3 class="footer-mob__title title-3">підписатися на розсилку </h3>
+                    <div class="footer-mob__text text-content last-no-margin">
+                        <p>
+                            Приєднуйся до нашого beauty комьюніті - отримуй ексклюзивні пропозиції та секрети ідеального
+                            догляду за шкірою.
+                        </p>
+                    </div>
+                    <form action="/" class="subscription-form">
+                        <input type="text" placeholder="Електронна пошта">
+                        <button class="button-link"><span>підписатися</span></button>
+                    </form>
+                </div>
+                <div class="footer-mob__row">
+                    <div class="footer-mob__copy">
+                        © 2022 YOS Skincare. Всі права захищені.
+                        designed & developed by ra-web
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+    <!-- == // FOOTER ================== -->
+
+</body>
+
+</html>
